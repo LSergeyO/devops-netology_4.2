@@ -36,12 +36,20 @@ for result in result_os.split('\n'):
 
 ### Ваш скрипт:
 ```python
-???
+import os
+
+bash_command = ["cd ~/netology/sysadm-homeworks", "git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(path + prepare_result)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+/home/lsergeyo/netology/sysadm-homeworks/test1
+/home/lsergeyo/netology/sysadm-homeworks/test2
 ```
 
 ## Обязательная задача 3
@@ -49,12 +57,26 @@ for result in result_os.split('\n'):
 
 ### Ваш скрипт:
 ```python
-???
+import os   
+    
+print("Введите путь к репозиторию)
+path = input()
+
+os.chdir(path)
+bash_command = ["git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(path+prepare_result)
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+Введите путь к репозиторию
+/lsergeyo/netology/sysadm-homeworks/
+/home/lsergeyo/netology/sysadm-homeworks/test1
+/home/lsergeyo/netology/sysadm-homeworks/test2
 ```
 
 ## Обязательная задача 4
