@@ -84,10 +84,37 @@ for result in result_os.split('\n'):
 
 ### Ваш скрипт:
 ```python
-???
+import socket
+
+n = 0
+addr = {"drive.google.com": socket.gethostbyname("drive.google.com"),
+       "mail.google.com": socket.gethostbyname("mail.google.com"),
+        "google.com": socket.gethostbyname("google.com")}
+while n < 5:
+    n = n + 1
+    for host in addr:
+        if addr[host] != socket.gethostbyname(host):
+            print("[ERROR] " + str(host) + " IP mismatch: " + addr[host] + "--- " + socket.gethostbyname(host))
+        addr[host] = socket.gethostbyname(host)
+        print(host + " --- " + addr[host] + " OK")
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+drive.google.com --- 108.177.14.194 OK
+mail.google.com --- 216.58.209.165 OK
+google.com --- 216.58.210.174 OK
+drive.google.com --- 108.177.14.194 OK
+mail.google.com --- 216.58.209.165 OK
+google.com --- 216.58.210.174 OK
+drive.google.com --- 108.177.14.194 OK
+mail.google.com --- 216.58.209.165 OK
+google.com --- 216.58.210.174 OK
+drive.google.com --- 108.177.14.194 OK
+mail.google.com --- 216.58.209.165 OK
+google.com --- 216.58.210.174 OK
+drive.google.com --- 108.177.14.194 OK
+mail.google.com --- 216.58.209.165 OK
+google.com --- 216.58.210.174 OK
+
 ```
